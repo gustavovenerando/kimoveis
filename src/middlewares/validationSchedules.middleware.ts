@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import AppDataSource from "../data-source";
-import ScheduleUserProperty from "../entities/ScheduleUserProperty";
+import Property from "../entities/Property.entity";
 import AppError from "../errors/AppError";
 import { IScheduleMiddleware } from "../interfaces/schedules";
 
@@ -12,19 +12,22 @@ const validationSchedulesMiddleware = async (
 	const { propertyId, date, hour }: IScheduleMiddleware = req.body;
 	const userId = req.user.id;
 
-	const scheduleRepository =
-		AppDataSource.getRepository(ScheduleUserProperty);
+	const propertyRepository = AppDataSource.getRepository(Property);
+	const property = await propertyRepository.findOne({
+		where: { id: propertyId },
+		relations: { schedules: true },
+	});
+	// console.log(property);
+	if (!property) {
+		throw new AppError(404, "Property not found.");
+	}
+
+	const allSchedulesByProperty = property.schedules;
 
 	const [hourTime, minTime] = hour.split(":").map((elem) => +elem);
 	const [year, month, day] = date.split("/").map((elem) => +elem);
 
 	const dateObj = new Date(year, month - 1, day, hourTime, minTime);
-
-	const allSchedules = await scheduleRepository.find();
-
-	const allSchedulesByProperty = allSchedules.filter(
-		(schedule) => schedule.property.id === propertyId
-	);
 
 	allSchedulesByProperty.forEach((schedule) => {
 		const [hourTime, minTime] = schedule.hour

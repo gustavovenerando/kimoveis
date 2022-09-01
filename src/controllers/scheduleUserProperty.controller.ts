@@ -1,3 +1,4 @@
+import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import {
 	createScheduleService,
@@ -28,5 +29,5 @@ export const listScheduleByPropertyController = async (
 
 	const property = await listScheduleByPropertyService(property_id);
 
-	res.status(200).send(property);
+	res.status(200).send(instanceToPlain(property));
 };

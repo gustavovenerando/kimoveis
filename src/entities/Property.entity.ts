@@ -34,7 +34,6 @@ class Property {
 	@UpdateDateColumn()
 	updatedAt: Date;
 
-	//Ao usar somnente a ManyToOne (sem adicionar OneToMany do outro lado da relacao), na base de dados o "Id" é colocado automaticamente no nome. Assim, no db fica categoryId. (fonte: typeORM documentation)
 	@ManyToOne(() => Category, (categories) => categories.properties, {
 		eager: true,
 	})
