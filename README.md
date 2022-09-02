@@ -222,10 +222,10 @@ Após o usuário estar logado, ele deve conseguir realizar um agendamento a um i
 }
 ```
 
-**O campo propertyId é obrigatório e deve corresponder ao id de um imóvel criado**
-**Não é possivel um usuário ter 2 visitas ao mesmo imóvel**
-**Não é possível agendar uma visita com data e hora já reservadas**
-**Só é possível agendar uma visita durante o horário comercial (08:00 às 18:00) e em dias úteis (segunda à sexta)**
+-   O campo propertyId é obrigatório e deve corresponder ao id de um imóvel criado.
+-   Não é possivel um usuário ter 2 visitas ao mesmo imóvel.
+-   Não é possível agendar uma visita com data e hora já reservadas.
+-   Só é possível agendar uma visita durante o horário comercial (08:00 às 18:00) e em dias úteis (segunda à sexta).
 
 Caso dê tudo certo, a resposta será:
 
@@ -336,9 +336,9 @@ A resposta será assim:
 }
 ```
 
-**O campo categoryId é obrigatório e deve corresponder ao id de uma categoria criada**
-**Não podem ser cadastrados dois imóveis com o mesmo zipCode**
-**Não pode ser cadastrado imóveis com o campo state maior que 2 dígitos e zipCode maior que 8 dígitos**
+**O campo categoryId é obrigatório e deve corresponder ao id de uma categoria criada.**
+**Não podem ser cadastrados dois imóveis com o mesmo zipCode.**
+**Não pode ser cadastrado imóveis com o campo state maior que 2 dígitos e zipCode maior que 8 dígitos.**
 
 Caso dê tudo certo, a resposta será:
 
@@ -376,8 +376,6 @@ Caso tente cadastrar um imóvel com zipCode já cadastrado:
 	"message": "Address already registered."
 }
 ```
-
-////////////
 
 <h2 align ='center'> Listar todos os agendamentos de um imóvel</h2>
 
