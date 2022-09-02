@@ -336,9 +336,9 @@ A resposta será assim:
 }
 ```
 
-**O campo categoryId é obrigatório e deve corresponder ao id de uma categoria criada.**
-**Não podem ser cadastrados dois imóveis com o mesmo zipCode.**
-**Não pode ser cadastrado imóveis com o campo state maior que 2 dígitos e zipCode maior que 8 dígitos.**
+-   O campo categoryId é obrigatório e deve corresponder ao id de uma categoria criada.
+-   Não podem ser cadastrados dois imóveis com o mesmo zipCode.
+-   Não pode ser cadastrado imóveis com o campo state maior que 2 dígitos e zipCode maior que 8 dígitos.
 
 Caso dê tudo certo, a resposta será:
 
